@@ -23,6 +23,11 @@ function getEles() {
     const NavItems = document.querySelectorAll('div.nav-items');
     const ItemArr = [];
     Array.prototype.forEach.call(NavItems,(item)=>{
+        /** 
+         * childNodes获取的是节点的所有子节点，包括了whitespce和文本
+         * 如果你只想获取element元素的话可以使用Element.children获取。
+        */
+            // console.log(item.children);
             const arr = Array.prototype.filter.call(item.childNodes,(ele)=>{
                 return ele.nodeType == 1;
             });
