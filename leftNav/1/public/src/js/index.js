@@ -12,7 +12,6 @@ function swith(item) {
 }
 
 function AddEvent() {
-    let isShow = false;
     getEles().forEach(ele=>{
         swith(ele);
     })
