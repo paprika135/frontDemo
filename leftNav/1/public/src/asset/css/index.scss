@@ -10,9 +10,9 @@ a {
 
 @keyframes show {
     from {
+        display: none;
         transform: translateX(-100%);
     }
-
     to {
         transform: translateX(0);
     }
@@ -22,11 +22,11 @@ a {
     from {
         transform: translateX(0);
     }
-
     to {
         transform: translateX(-100%);
     }
 }
+
 
 @media (min-width: 576px) {
     .left-box {
@@ -88,7 +88,16 @@ div#app {
                 font-size: .75rem;
                 padding: .1875rem;
                 background-color: #2d3436;
-                animation:show 0.2s linear;
+                animation:show 0.2s linear forwards 1;
+            }
+            .hide {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                font-size: .75rem;
+                padding: .1875rem;
+                background-color: #2d3436;
+                animation:hide 0.2s linear reverse backwards 1;
             }
         }
     }
