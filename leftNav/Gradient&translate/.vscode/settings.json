@@ -1,0 +1,12 @@
+{
+    "scss.lint.argumentsInColorFunction": "ignore",
+    "scss.lint.emptyRules": "ignore",
+    "tailwindCSS.includeLanguages": {
+        "html": "html",
+        "javascript": "javascript",
+        "css": "css"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}
