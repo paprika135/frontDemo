@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex-row">
         <div class="flex justify-between items-center h-20"><img class="w-16 h-8" src="@/assets/images/logo.webp"
                 alt="">
             <div class="flex justify-between items-center w-44">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="h-10 flex relative">
+        <div class="h-10 flex">
             <div class="slide leading-10 flex-initial">
                 <a class="w-16 mx-3" href="#"><span>首页</span></a>
                 <a class="w-16 mx-3" href="#"><span>首页</span></a>
@@ -45,7 +45,7 @@
 
 <style scoped lang="scss">
 div.slide{
-    overflow: auto;
+    overflow: scroll;
     white-space: nowrap;
     &::-webkit-scrollbar{
         display: none;
