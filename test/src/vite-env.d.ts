@@ -13,8 +13,8 @@ type QuestionOptions = {
 interface QuestionType {
     questionId:number
     questionType:string
-    questionTitle:string
-    questionOptions:QuestionOptions[]
+    questionTitle:string | string[]
+    questionOptions?:QuestionOptions[]
 }
 
 

@@ -1,16 +1,23 @@
 <template>
-    <fieldset>
-        <legend class="questionTitle">11.证券市场是指进行证券交易的场所和组织的总称。</legend>
-        <div class="questionBody">
-            <input-component></input-component>
-        </div>
-    </fieldset>
+    <div>
+        <fieldset>
+            <legend class="questionTitle">{{ props.question.questionId }}.{{ question.questionTitle }}</legend>
+            <div class="questionBody">
+                <input-component></input-component>
+            </div>
+        </fieldset>
+    </div>
 </template>
 
 <script setup lang="ts">
+import { type PropType } from 'vue';
 import InputComponent from './Blank/InputComponent.vue';
+const props = defineProps({
+    question: {
+        type: Object as PropType<QuestionType>,
+        required: true
+    }
+})
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

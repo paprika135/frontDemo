@@ -13,7 +13,7 @@ const store = createStore({
         } as AnswerType
     },
     mutations:{
-        increment(state:AnswerType,answer:any){
+        addAnswer(state:AnswerType,answer:any){
             console.log(answer);
             state.answer.push(answer);
         }
