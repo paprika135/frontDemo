@@ -4,6 +4,8 @@ import './assets/css/index.scss';
 import App from './App.vue';
 import setupPlugin from './utils/ComponentAutoLoad';
 import setupVuex from './plugins/vuex';
+import '@/assets/iconfont/iconfont.css';
+import 'virtual:svg-icons-register';
 
 
 

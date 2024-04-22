@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "fast-glob": "^3.3.2",
     "mockjs": "^1.1.0",
     "sass": "^1.74.1",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue": "^3.4.21",
     "vuex": "^4.0.2"
   },

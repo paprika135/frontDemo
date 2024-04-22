@@ -1,9 +1,9 @@
 <template>
     <div>
-        <fieldset :name="String(singalchoiceComponentId)">
-            <legend class="questionTitle"><span>*</span>{{ props.question?.questionId }}.{{ props.question?.questionTitle }}</legend>
+        <fieldset :disabled="true" @click="clickevent" :name="String(singalchoiceComponentId)">
+            <legend class="questionTitle"><span v-if="props.question?.isNecessay">*</span>{{ props.question?.questionId }}.{{ props.question?.questionTitle }}</legend>
             <div class="questionBody">
-                <options v-for="(o,i) of props.question?.questionOptions" :key="i"  :opt="o" :uuId="String(singalchoiceComponentId)"></options>
+                <options v-for="(o,i) of props.question?.questionOptions" :key="i"  :opt="o" :uuId="String(singalchoiceComponentId)" :checkedOption="2"></options>
             </div>
         </fieldset>
     </div>
@@ -17,6 +17,12 @@ const props = defineProps({
         require:true,
     }
 });
+
+const clickevent = (event:MouseEvent | any)=>{
+    if(event.target.checked  == true){
+        console.log(event.target.value);
+    }
+}
 
 const instance = getCurrentInstance();
 const singalchoiceComponentId = instance?.uid as number;

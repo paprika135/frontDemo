@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input  ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="option"/>
+        <input  ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="option" :checked="props.opt?.optionsId == props.checkedOption"/>
         <label class="ml-1 align-middle" :for="`${props.uuId}`+option">{{option}}:{{props.opt?.optionContent }}</label>
     </div>
 </template>
@@ -15,6 +15,9 @@ const props = defineProps({
     },
     uuId:{
         type:String
+    },
+    checkedOption:{
+        type:Number
     }
 })
 

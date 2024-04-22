@@ -12,7 +12,8 @@ for (let i = 1; i <= 20; i++) {
     const question: QuestionType = {
         questionId: i,
         questionType: questionType[getRandomIndex(questionType)],
-        questionTitle: mockjs.Random.cword(20)
+        questionTitle: mockjs.Random.cword(20),
+        isNecessay:mockjs.Random.boolean()
     }
     if (question.questionType === 'Blank') {
         //因为问答题没有选项

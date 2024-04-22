@@ -15,6 +15,7 @@ interface QuestionType {
     questionType:string
     questionTitle:string | string[]
     questionOptions?:QuestionOptions[]
+    isNecessay:boolean
 }
 
 

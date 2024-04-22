@@ -8,9 +8,15 @@
     border: 0 solid #e0e0e0;
 }
 
+@layer base {
+    html {
+      font-family:sans-serif;
+    }
+  }
+
 @layer components{
     .questionTitle{
-        @apply text-sm align-middle;
+        @apply text-lg text-gray-700 font-serif align-middle;
         span{
             @apply text-red-500 align-middle;
         }
@@ -19,6 +25,6 @@
 
 @layer components{
     .questionBody{
-        @apply ml-5 mt-2;
+        @apply ml-5 mt-2 font-serif;
     }
 }

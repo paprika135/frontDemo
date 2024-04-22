@@ -13,7 +13,6 @@
 <script setup lang="ts">
 import questionList from '../mock/mock';
 import { ref } from 'vue';
-console.log(questionList);
 const questionLists = ref(questionList);
 
 </script>

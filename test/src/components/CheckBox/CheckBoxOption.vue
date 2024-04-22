@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input class="mr-2 align-middle" type="checkbox" :name="`${props.uuId}`" :id="`${props.uuId}` + `${option}`">
+        <input class="mr-2 align-middle" type="checkbox" :name="`${props.uuId}`" :id="`${props.uuId}` + `${option}`" :value="option">
         <label class="align-middle" :for="`${props.uuId}` + `${option}`"><span>{{ option }}:</span>{{ props.option.optionContent }}</label>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <fieldset>
-            <legend class="questionTitle"><span>*</span>{{ props.question.questionId }}.{{ props.question.questionTitle
+        <fieldset @click="clickevent">
+            <legend class="questionTitle"><span v-if="props.question.isNecessay">*</span>{{ props.question.questionId }}.{{ props.question.questionTitle
                 }}</legend>
             <div class="questionBody">
                 <check-box-option v-for="(item, index) of props.question.questionOptions" :uuId="uuId" :key="index"
@@ -24,6 +24,14 @@ const props = defineProps({
         required: true
     }
 })
+
+const clickevent = (event:MouseEvent | any)=>{
+    if(event.target.checked == true){
+        console.log(event.target.value);
+        
+    }
+}
+
 const instance = getCurrentInstance()!;
 const uuId = instance.uid;
 
