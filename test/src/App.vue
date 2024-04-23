@@ -4,7 +4,7 @@
       <section class="header">
         <div class="header h-[80px] bg-cover"></div>
       </section>
-      <section class="questionbody">
+      <section class="body">
         <question-page></question-page>
         <!-- <answer-page></answer-page> -->
       </section>

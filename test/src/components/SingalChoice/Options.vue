@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input  ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="option" :checked="props.opt?.optionsId == props.checkedOption"/>
+        <input  ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="props.opt?.optionId"/>
         <label class="ml-1 align-middle" :for="`${props.uuId}`+option">{{option}}:{{props.opt?.optionContent }}</label>
     </div>
 </template>
@@ -22,7 +22,7 @@ const props = defineProps({
 })
 
 const option = computed<string>(()=>{
-    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".at(props.opt?.optionsId as number) as string;
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".at((props.opt?.optionSort as number -1)) as string;
 })
 
 

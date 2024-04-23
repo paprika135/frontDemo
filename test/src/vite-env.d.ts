@@ -5,17 +5,40 @@ interface EventTarget {
     value:any
 }
 
-type QuestionOptions = {
-    optionsId:number
-    optionContent:string
+interface TestData {
+    "testPaperId":number
+    "testPaperNumber":string
+    "title":string
+    "examDescription":string
+    "overTime":number,
+    "cutScreen":number,
+    "pattern": number,
+    "randomSetting": number,
+    "randomQuestionType":any[],
+    "questionList":QuestionType[] 
+}
+
+
+
+interface QuestionOptions {
+    "optionId": number
+    "questionId": number
+    "optionSort": number
+    "optionContent": string
+    "optionPicture": string
 }
 
 interface QuestionType {
-    questionId:number
-    questionType:string
-    questionTitle:string | string[]
-    questionOptions?:QuestionOptions[]
-    isNecessay:boolean
+    "questionId":number
+    "questionType": string
+    "questionStem": string
+    "picture"?: string
+    "questionNumber": number
+    "questionScore": number
+    "isNecessary": number
+    "questionOptions":QuestionOptions[]
+    "optionRandom"?:number
+    "componentName"?:string
 }
 
 

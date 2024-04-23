@@ -1,31 +1,47 @@
 <template>
     <div>
-        <fieldset :disabled="true" @click="clickevent" :name="String(singalchoiceComponentId)">
-            <legend class="questionTitle"><span v-if="props.question?.isNecessay">*</span>{{ props.questionId + 1 }}.{{ props.question?.questionTitle }}</legend>
+        <fieldset @click="clickevent" :name="String(singalchoiceComponentId)">
+            <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question?.questionStem }}</legend>
             <div class="questionBody">
-                <options v-for="(o,i) of props.question?.questionOptions" :key="i"  :opt="o" :uuId="String(singalchoiceComponentId)" :checkedOption="2"></options>
+                <options v-for="(o,i) of sortedOptions" :key="i"  :opt="o" :uuId="String(singalchoiceComponentId)"></options>
             </div>
         </fieldset>
     </div>
 </template>
 <script setup lang="ts">
-import { getCurrentInstance, type PropType } from 'vue';
+import { computed, getCurrentInstance, type PropType } from 'vue';
 import Options from './SingalChoice/Options.vue';
 const props = defineProps({
     question:{
         type:Object as PropType<QuestionType>,
         require:true,
     },
-    questionId:{
-        type:Object as PropType<number|any>
+    questionSort:{
+        type:Number
     }
 });
+
+const isNecessay = computed(()=>{
+    return props.question?.isNecessary  == 1 ? true : false;
+})
 
 const clickevent = (event:MouseEvent | any)=>{
     if(event.target.checked  == true){
         console.log(event.target.value);
     }
 }
+
+
+
+const sortedOptions = computed(()=>{
+    const arr:QuestionOptions[] = props.question?.questionOptions.sort((a,b)=>{
+        return a.optionSort - b.optionSort;
+    }) as QuestionOptions[];
+    return arr;
+})
+
+
+
 
 const instance = getCurrentInstance();
 const singalchoiceComponentId = instance?.uid as number;
