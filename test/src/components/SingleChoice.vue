@@ -1,7 +1,7 @@
 <template>
     <div>
         <fieldset :disabled="true" @click="clickevent" :name="String(singalchoiceComponentId)">
-            <legend class="questionTitle"><span v-if="props.question?.isNecessay">*</span>{{ props.question?.questionId }}.{{ props.question?.questionTitle }}</legend>
+            <legend class="questionTitle"><span v-if="props.question?.isNecessay">*</span>{{ props.questionId + 1 }}.{{ props.question?.questionTitle }}</legend>
             <div class="questionBody">
                 <options v-for="(o,i) of props.question?.questionOptions" :key="i"  :opt="o" :uuId="String(singalchoiceComponentId)" :checkedOption="2"></options>
             </div>
@@ -15,6 +15,9 @@ const props = defineProps({
     question:{
         type:Object as PropType<QuestionType>,
         require:true,
+    },
+    questionId:{
+        type:Object as PropType<number|any>
     }
 });
 

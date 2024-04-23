@@ -5,26 +5,15 @@
             <div><input class="align-middle mr-2" type="checkbox" name="onlyError" :id="uuId"><label for="uuId"
                     class="text-gray-900">仅看错题</label></div>
         </div>
-        <div class="mt-4">
+        <div v-for="(questionInfo,index) of props.examQuestions" class="mt-4">
             <section class="questionbody">
-                <single-choice :question="question"></single-choice>
+                <single-choice :questionId="index" :questionInfo="questionInfo" :question="question"></single-choice>
             </section>
             <section class="judgement">
-                <judgement></judgement>
+                <judgement :questionType="question.questionType" :commitResult="questionInfo.questionCommitResult" :answer="questionInfo.answer" ></judgement>
             </section>
             <section class="resolve">
-                <resolve></resolve>
-            </section>
-        </div>
-        <div class="mt-4">
-            <section class="questionbody">
-                <single-choice :question="question"></single-choice>
-            </section>
-            <section class="judgement">
-                <judgement></judgement>
-            </section>
-            <section class="resolve">
-                <resolve></resolve>
+                <resolve :questionAnalysis="questionInfo.answerAnalysis" ></resolve>
             </section>
         </div>
     </div>
@@ -37,8 +26,8 @@ import Judgement from './Judgement.vue';
 import Resolve from './Resolve.vue';
 import mockjs from 'mockjs';
 
-const question = ref<QuestionType>({
-    questionId: 1,
+const question = ref({
+    questionId: 199,
     questionTitle: mockjs.Random.cword(20),
     questionType: 'SingleChoice',
     isNecessay: mockjs.Random.boolean(),
@@ -72,7 +61,7 @@ defineOptions({
 
 const instance = getCurrentInstance()!;
 const uuId = ref<string>(String(instance.uid));
-
+const props = defineProps(['examQuestions'])
 
 
 </script>

@@ -5,15 +5,15 @@
         <div class="header h-[80px] bg-cover"></div>
       </section>
       <section class="questionbody">
-        <!-- <question-page></question-page> -->
-        <answer-page></answer-page>
+        <question-page></question-page>
+        <!-- <answer-page></answer-page> -->
       </section>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-// import QuestionPage from './layout/QuestionPage.vue';
+import QuestionPage from './layout/QuestionPage.vue';
 import AnswerPage from './layout/AnswerPage.vue';
 
 
