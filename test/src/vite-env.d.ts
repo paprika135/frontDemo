@@ -2,23 +2,45 @@
 
 // 复写EventTarget接口
 interface EventTarget {
-    value:any
+    value: any
 }
 
 interface TestData {
-    "testPaperId":number
-    "testPaperNumber":string
-    "title":string
-    "examDescription":string
-    "overTime":number,
-    "cutScreen":number,
+    "testPaperId": number
+    "testPaperNumber": string
+    "title": string
+    "examDescription": string
+    "overTime": number,
+    "cutScreen": number,
     "pattern": number,
     "randomSetting": number,
-    "randomQuestionType":any[],
-    "questionList":QuestionType[] 
+    "randomQuestionType": any[],
+    "questionList": QuestionType[]
+}
+
+interface ResInfo {
+    "questionId":number,
+    "questionCommitResult":string,
+    "questionResult"?: number,
+    "answer":string,
+    "answerAnalysis"?: string
 }
 
 
+interface ResData {
+    "totalScore": number,
+    "totalQuestion": number,
+    "score": number,
+    "rightQuestion": number,
+    "examResultInfo":ResInfo[]
+}
+
+
+interface TestRes {
+    "msg": string
+    "code": number,
+    "data": ResData
+}
 
 interface QuestionOptions {
     "optionId": number
@@ -29,16 +51,16 @@ interface QuestionOptions {
 }
 
 interface QuestionType {
-    "questionId":number
+    "questionId": number
     "questionType": string
     "questionStem": string
     "picture"?: string
     "questionNumber": number
     "questionScore": number
     "isNecessary": number
-    "questionOptions":QuestionOptions[]
-    "optionRandom"?:number
-    "componentName"?:string
+    "questionOptions": QuestionOptions[]
+    "optionRandom"?: number
+    "componentName"?: string
 }
 
 

@@ -1,11 +1,11 @@
 <template>
     <div>
         <input  ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="props.opt?.optionId"/>
-        <label class="ml-1 align-middle" :for="`${props.uuId}`+option">{{option}}:{{props.opt?.optionContent }}</label>
+        <label class="ml-1 align-middle" :for="`${props.uuId}`+option"><span v-show="!props.isTrueOrFalse">{{option}}:</span>{{props.opt?.optionContent }}</label>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">    
 import { computed, type PropType, } from 'vue';
 
 const props = defineProps({
@@ -18,8 +18,12 @@ const props = defineProps({
     },
     checkedOption:{
         type:Number
+    },
+    isTrueOrFalse:{
+        type:Boolean
     }
 })
+
 
 const option = computed<string>(()=>{
     return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".at((props.opt?.optionSort as number -1)) as string;

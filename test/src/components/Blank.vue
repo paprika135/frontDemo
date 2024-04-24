@@ -1,7 +1,7 @@
 <template>
     <div>
         <fieldset>
-            <legend class="questionTitle">{{ props.question.questionId }}.{{ question.questionTitle }}</legend>
+            <legend class="questionTitle">{{ props.question.questionStem }}</legend>
             <div class="questionBody">
                 <input-component></input-component>
             </div>
@@ -16,6 +16,9 @@ const props = defineProps({
     question: {
         type: Object as PropType<QuestionType>,
         required: true
+    },
+    questionSort:{
+        type:Number
     }
 })
 </script>

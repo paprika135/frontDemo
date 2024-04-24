@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input class="mr-2 align-middle" type="checkbox" :name="`${props.uuId}`" :id="`${props.uuId}` + `${option}`" :value="option">
+        <input class="mr-2 align-middle" type="checkbox" :name="`${props.uuId}`" :id="`${props.uuId}` + `${option}`" :value="props.option.optionId">
         <label class="align-middle" :for="`${props.uuId}` + `${option}`"><span>{{ option }}:</span>{{ props.option.optionContent }}</label>
     </div>
 </template>
@@ -19,8 +19,10 @@ const props = defineProps({
 });
 
 const option = computed<string>(()=>{
-    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".at(props.option?.optionsId as number) as string;
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".at((props.option?.optionSort as number -1)) as string;
 })
+
+
 
 </script>
 

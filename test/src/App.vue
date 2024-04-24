@@ -1,29 +1,19 @@
 <template>
-  <div class="body">
-    <section class="min-h-screen bg-gray-50 mx-auto w-2/3">
-      <section class="header">
-        <div class="header h-[80px] bg-cover"></div>
-      </section>
-      <section class="body">
-        <question-page></question-page>
-        <!-- <answer-page></answer-page> -->
-      </section>
-    </section>
+  <div class="body min-h-screen min-w-full">
+    <div class="h-5"></div>
+    <!-- <test-page></test-page> -->
+    <!-- <answer-page></answer-page> -->
+    <router-view></router-view>
+    <div class="h-5"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import QuestionPage from './layout/QuestionPage.vue';
-import AnswerPage from './layout/AnswerPage.vue';
-
-
+// import TestPage from './layouts/TestPage.vue';
+// import AnswerPage from './layouts/AnswerPage.vue';
 </script>
 
 <style scoped lang="scss">
-div.header {
-  background-image: url('./assets//images/header.png');
-}
-
 div.body {
   background-image: url('./assets//images/background.jpg');
 }
