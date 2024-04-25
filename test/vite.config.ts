@@ -14,5 +14,9 @@ export default defineConfig({
     alias:{
       "@":path.resolve(__dirname,'src')
     }
+  },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment'
   }
 })
