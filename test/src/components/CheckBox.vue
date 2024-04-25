@@ -1,6 +1,6 @@
 <template>
     <div>
-        <fieldset @click="clickevent">
+        <fieldset @change="clickevent">
             <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question.questionStem
                 }}</legend>
             <div class="questionBody">
@@ -18,34 +18,51 @@ import {
     getCurrentInstance
 } from 'vue';
 import CheckBoxOption from './CheckBox/CheckBoxOption.vue';
+import useAnswersStore from '@/plugins/pinia/answers';
+const answerStore = useAnswersStore();
 
 const props = defineProps({
     question: {
         type: Object as PropType<QuestionType>,
         required: true
     },
-    questionSort:{
-        type:Number
+    questionSort: {
+        type: Number
     }
 })
 
-const isNecessay = computed(()=>{
+const isNecessay = computed(() => {
     return props.question.isNecessary == 1 ? true : false;
 })
 
+const anser = {
+    questionId: props.question?.questionId as number,
+    //@ts-ignore
+    questionType: props.question?.questionType,
+    questionScore: props.question?.questionScore as number,
+    selectedAnswer: [] as string[]
+}
 
-const clickevent = (event:MouseEvent | any)=>{
-    if(event.target.checked == true){
-        console.log(event.target.value);
-        
+
+const clickevent = (event: MouseEvent | any) => {
+    if (event.target.checked == true) {
+        if(anser.selectedAnswer.includes(event.target.value)) return;
+        anser.selectedAnswer.push(event.target.value);
+        answerStore.setAnswer(anser);
+    }else{
+        const result = anser.selectedAnswer.filter(item=>item !== event.target.value);
+        anser.selectedAnswer = result;
+        answerStore.setAnswer(anser);
     }
+    answerStore.addAnswer();
+    // console.log(answerStore.answers.questions);
 }
 
 const instance = getCurrentInstance()!;
 const uuId = instance.uid;
 
-const sortedOptions = computed(()=>{
-    return props.question.questionOptions.sort((a,b)=>{
+const sortedOptions = computed(() => {
+    return props.question.questionOptions.sort((a, b) => {
         return a.optionSort - b.optionSort;
     })
 })

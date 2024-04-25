@@ -22,8 +22,11 @@ import AnserPageHeader from '@/views/AnswerPage/AnswerPageHeader.vue';
 import AnswerPageBody from '@/views/AnswerPage/AnswerPageBody.vue';
 import response from '@/mock/response';
 import TestTitle from '@/views/TestTitle.vue';
-
+import useQuestionsStore from '@/plugins/pinia/question';
 const res = ref<TestRes>(response)
+
+const store = useQuestionsStore();
+
 
 
 

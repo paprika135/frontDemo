@@ -7,11 +7,13 @@ import setupVuex from './plugins/vuex';
 import '@/assets/iconfont/iconfont.css';
 import 'virtual:svg-icons-register';
 import setupVueRouter from './router/router';
+import setupPinia from './plugins/pinia';
 
 
 
 const app = createApp(App);
 setupPlugin(app);
 setupVuex(app);
-setupVueRouter(app)
+setupVueRouter(app);
+setupPinia(app);
 app.mount('#app');

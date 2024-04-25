@@ -8,11 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import TestTitle from '../TestTitle.vue';
 import QuestionBody from '@/views/QuestionPage/QuestionBody.vue';
-import testData from '@/mock/index'
-const questions = ref<TestData>(testData);
+import TestTitle from '../TestTitle.vue';
+import { inject } from 'vue';
+const questions:TestData = inject('questions') as unknown as TestData;
 
 
 

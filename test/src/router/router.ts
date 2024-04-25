@@ -20,12 +20,16 @@ const routes:RouteRecordRaw[] = [{
     }]
 }];
 
+
+
 const router = createRouter({
     history:createWebHistory(),
     routes
 })
 
-
+router.beforeEach((to,from)=>{
+    return undefined;
+})
 
 export default function setupVueRouter(app:App){
     app.use(router)

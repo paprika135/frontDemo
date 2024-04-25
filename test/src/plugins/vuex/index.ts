@@ -2,21 +2,41 @@ import { type App } from 'vue';
 // @ts-ignore
 import { createStore } from 'vuex';
 
-interface AnswerType {
-    answer:any[]
+
+const questions = {
+    namespace:true,
+    state:{
+        question:{
+            name:"weizhu"
+        }
+    },
+    mutations:{
+        saveQuestion(state:any,questions:any){
+            console.log(123);
+            Object.assign(state,questions);
+            console.log(state);
+        }
+    },
+    strict:false
 }
 
-const store = createStore({
-    state(){
-        return {
-            answer:[]
-        } as AnswerType
+const answer = {
+    namespace:true,
+    state:{
+        answer:'123'
     },
     mutations:{
         addAnswer(state:AnswerType,answer:any){
             console.log(answer);
-            state.answer.push(answer);
         }
+    },
+    strict:false
+}
+
+const store = createStore({
+    modules:{
+        questions,
+        answer
     }
 })
 
