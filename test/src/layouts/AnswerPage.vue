@@ -23,10 +23,8 @@ import AnserPageHeader from '@/views/AnswerPage/AnswerPageHeader.vue';
 import TestTitle from '@/views/TestTitle.vue';
 import { ref } from 'vue';
 
+//获取判卷结果
 const res = ref<TestRes>(response)
-
-
-
 
 const collapseSwitch = ref<boolean>(true)
 

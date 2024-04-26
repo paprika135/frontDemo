@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
+//svg批量处理插件
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 

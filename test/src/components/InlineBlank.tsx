@@ -60,10 +60,10 @@ export default {
             type:Boolean
         }
     },
-    setup(props:any,context:any) {
+    setup(props:any) {
         const answerStore = useAnswersStore();
         const lodash = /_+/g;
         const questionStem = props.question.questionStem.replace(lodash,'_').split('_');
-        return ()=>CreateVnode(props,answerStore,questionStem as unknown as string[])
+        return ()=>CreateVnode(props,answerStore,questionStem as unknown as string[]);
     }
 }
