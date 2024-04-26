@@ -1,10 +1,10 @@
 <template>
     <div>
-        <fieldset @change="clickevent">
+        <fieldset :disabled="props.isDisable" @change="clickevent">
             <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question.questionStem
                 }}</legend>
             <div class="questionBody">
-                <check-box-option v-for="(item, index) of sortedOptions" :uuId="uuId" :key="index"
+                <check-box-option :ischecked="isOptionChecked(item.optionId)" v-for="(item, index) of sortedOptions" :uuId="uuId" :key="index"
                     :option="item"></check-box-option>
             </div>
         </fieldset>
@@ -28,6 +28,9 @@ const props = defineProps({
     },
     questionSort: {
         type: Number
+    },
+    isDisable:{
+        type:Boolean
     }
 })
 
@@ -66,6 +69,15 @@ const sortedOptions = computed(() => {
         return a.optionSort - b.optionSort;
     })
 })
+
+const isOptionChecked = (id:number)=>{
+    // console.log(props.question.selectedAnswer);
+    if(props.question.selectedAnswer){
+        if(props.question.selectedAnswer.includes(String(id))) return true;
+        return false;
+    }
+}
+
 
 </script>
 

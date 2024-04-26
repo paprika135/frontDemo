@@ -32,23 +32,20 @@ const response:TestRes = {
                 "questionId": 202,
                 "questionCommitResult": "司马迁",
                 "answer": "司马迁",
-                "answerAnalysis": ""
+                "questionResult": 1,
+                "answerAnalysis": "史记的作者是司马迁"
             },
             {
                 "questionId": 203,
                 "questionCommitResult": "床前明月光",
                 "answer": "床前明月光",
-                "answerAnalysis": ""
-            },
-            {
-                "questionId": 203,
-                "questionCommitResult": "抬头望明月",
-                "answer": "抬头望明月",
-                "answerAnalysis": ""
+                "questionResult": 0,
+                "answerAnalysis": "家喻户晓的唐诗，别告诉我你不会。"
             },
             {
                 "questionId": 204,
-                "questionCommitResult": "司马迁",
+                "questionCommitResult": "救火",
+                "questionResult": 2,
                 "answer": "等待人工判卷"
             }
         ]

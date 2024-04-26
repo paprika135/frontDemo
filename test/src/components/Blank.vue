@@ -1,9 +1,9 @@
 <template>
     <div>
-        <fieldset>
+        <fieldset :disabled="props.isDisable">
             <legend class="questionTitle">{{ props.question.questionStem }}</legend>
-            <div class="questionBody">
-                <input-component @blur="changeEvent"></input-component>
+            <div :class="{isGray:props.isDisable}" class="questionBody">
+                <input-component :selectedAnswer="props.question.selectedAnswer" @blur="changeEvent"></input-component>
             </div>
         </fieldset>
     </div>
@@ -21,6 +21,9 @@ const props = defineProps({
     },
     questionSort:{
         type:Number
+    },
+    isDisable:{
+        type:Boolean
     }
 })
 
@@ -42,4 +45,8 @@ function changeEvent(event:FocusEvent){
 
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+div.isGray{
+    @apply text-gray-500;
+}
+</style>

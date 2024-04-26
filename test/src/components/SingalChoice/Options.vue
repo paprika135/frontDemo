@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input  ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="props.opt?.optionId"/>
+        <input :checked="props.ischecked" ref="singalV" class="align-middle" type="radio" :id="`${props.uuId}`+option" :name="`${props.uuId}`" :value="props.opt?.optionId"/>
         <label class="ml-1 align-middle" :for="`${props.uuId}`+option"><span v-show="!props.isTrueOrFalse">{{option}}:</span>{{props.opt?.optionContent }}</label>
     </div>
 </template>
@@ -21,8 +21,13 @@ const props = defineProps({
     },
     isTrueOrFalse:{
         type:Boolean
+    },
+    ischecked:{
+        type:Boolean
     }
 })
+
+// console.log(props.ischecked);
 
 
 const option = computed<string>(()=>{

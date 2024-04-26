@@ -61,7 +61,11 @@ interface QuestionType {
     "questionOptions": QuestionOptions[]
     "optionRandom"?: number
     "componentName"?: string
+    "answer"?:any
+    "answerAnalysis"?:string
+    "isNecessary"?:number
+    "picture"?:any,
+    "selectedAnswer"?:any
+    "questionResult"?:number
 }
-
-
 

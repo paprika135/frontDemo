@@ -1,6 +1,6 @@
 <template>
     <div class="w-2/3 mx-auto bg-slate-100 shadow-lg">
-        <test-title :title="'测试'"></test-title>
+        <test-title :title="'高考数学'"></test-title>
         <AnserPageHeader :res="res"></AnserPageHeader>
         <section class="body">
             <div class="px-3">
@@ -10,22 +10,20 @@
                         查看答题解析<i class="iconfont icon-double-arrow"></i></div>
                 </div>
                 <AnswerPageBody :examQuestions="res.data.examResultInfo" v-if="!collapseSwitch"
-                    @click="clickevent"></AnswerPageBody>
+                    :clickevent="clickevent"></AnswerPageBody>
             </div>
         </section>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import AnserPageHeader from '@/views/AnswerPage/AnswerPageHeader.vue';
-import AnswerPageBody from '@/views/AnswerPage/AnswerPageBody.vue';
 import response from '@/mock/response';
+import AnswerPageBody from '@/views/AnswerPage/AnswerPageBody.vue';
+import AnserPageHeader from '@/views/AnswerPage/AnswerPageHeader.vue';
 import TestTitle from '@/views/TestTitle.vue';
-import useQuestionsStore from '@/plugins/pinia/question';
-const res = ref<TestRes>(response)
+import { ref } from 'vue';
 
-const store = useQuestionsStore();
+const res = ref<TestRes>(response)
 
 
 

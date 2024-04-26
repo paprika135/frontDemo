@@ -1,9 +1,9 @@
 <template>
     <div>
-        <fieldset @click="clickevent" :name="String(singalchoiceComponentId)">
+        <fieldset :disabled="props.isDisable" @click="clickevent" :name="String(singalchoiceComponentId)">
             <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question?.questionStem }}</legend>
             <div class="questionBody">
-                <options v-for="(o, i) of sortedOptions" :key="i" :opt="o" :uuId="String(singalchoiceComponentId)">
+                <options :ischecked="isOptionChecked(o.optionId)" v-for="(o, i) of sortedOptions" :key="i" :opt="o" :uuId="String(singalchoiceComponentId)">
                 </options>
             </div>
         </fieldset>
@@ -23,8 +23,20 @@ const props = defineProps({
     },
     questionSort: {
         type: Number
+    },
+    isDisable:{
+        type:Boolean
     }
 });
+
+const isOptionChecked = (id:number)=>{
+    if(props.question?.selectedAnswer === String(id)){
+        return true
+    }
+    return false;
+}
+
+
 
 
 
@@ -52,7 +64,7 @@ const clickevent = (event: MouseEvent | any) => {
 
 
 
-const sortedOptions = computed(() => {
+const sortedOptions = computed<QuestionOptions[]>(() => {
     const arr: QuestionOptions[] = props.question?.questionOptions.sort((a, b) => {
         return a.optionSort - b.optionSort;
     }) as QuestionOptions[];

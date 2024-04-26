@@ -1,9 +1,9 @@
 <template>
     <div>
-        <fieldset @change="clickevent">
+        <fieldset :disabled="isDisable" @change="clickevent">
         <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question?.questionStem }}</legend>
         <div class="questionBody">
-            <options v-for="(o, i) of sortedOptions" :key="i" :isTrueOrFalse="isTrueOrFalse" :opt="o" :uuId="String(singalchoiceComponentId)"></options>
+            <options :ischecked="isOptionChecked(o.optionId)" v-for="(o, i) of sortedOptions" :key="i" :isTrueOrFalse="isTrueOrFalse" :opt="o" :uuId="String(singalchoiceComponentId)"></options>
         </div>
     </fieldset>
     </div>
@@ -22,6 +22,9 @@ const props = defineProps({
     },
     questionSort:{
         type:Number
+    },
+    isDisable:{
+        type:Boolean
     }
 })
 
@@ -59,6 +62,13 @@ const clickevent = (event:MouseEvent | any)=>{
         answerStore.addAnswer();
     }
     // console.log(answerStore.answers.questions);
+}
+
+const isOptionChecked = (id:number)=>{
+    if(props.question?.selectedAnswer === String(id)){
+        return true
+    }
+    return false;
 }
 
 </script>

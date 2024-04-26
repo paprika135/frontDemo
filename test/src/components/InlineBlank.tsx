@@ -3,15 +3,12 @@ import useAnswersStore from '@/plugins/pinia/answers';
 
 
 
-// type CreateTuple<T extends any[]> = T extends infer P ? P : never;
-
-// function createTuple<T extends any[]>(arr:[...T]):[...T]{
-//     return [...arr];
-// }
-
+//限制答案数组的长度
 function templateAnswer(answerArr:string[],maxLength:number){
     return answerArr.slice(0,maxLength);
 }
+
+
 
 const CreateVnode = (props:any,store:any,questionStem:string[])=>{
     
@@ -25,6 +22,10 @@ const CreateVnode = (props:any,store:any,questionStem:string[])=>{
     let children:any[] = [];
     for(let i = 0;i < questionStem.length - 1;i++){
         children.push(questionStem[i]);
+        if(props.isDisable){
+            children.push(h(<input disabled class="border-2 w-10 focus:outline-none ml-1 rounded-md text-gray-400" type="text" value={props.question.selectedAnswer[i]}  />))
+            continue;
+        }
         children.push(h('input',{"id":i,'class':'border-2 w-10 focus:outline-none ml-1 rounded-md',onBlur:(event:FocusEvent | any)=>{
             if(anser.selectedAnswer.length >= questionStem.length -1){
                 anser.selectedAnswer = templateAnswer(anser.selectedAnswer,questionStem.length -1);
@@ -40,7 +41,7 @@ const CreateVnode = (props:any,store:any,questionStem:string[])=>{
             if(Number(window.getComputedStyle(event.target).getPropertyValue("width").split('p')[0]) < 150){
                 event.target.style.width = (32 + (event.target.value.length + 1)*8) + 'px';
             }
-        }}))
+        }}))     
     }
     return h('div',h('fieldset',h('legend',{class:'questionTitle align-middle'},[[,...children,questionStem[questionStem.length -1]]])))
 }
@@ -54,6 +55,9 @@ export default {
         },
         questionSort:{
             type:Number
+        },
+        isDisable:{
+            type:Boolean
         }
     },
     setup(props:any,context:any) {

@@ -25,13 +25,10 @@ answerStore.setterTestPaperId(questions.value.testPaperId);
 
 const skipTo = (event:MouseEvent)=>{
     //保存题目数据
-    const qustionStore = useQuestionsStore();
-    qustionStore.saveQuestion(questions.value.questionList);
-    console.log();
-    //提交答案
+    const questionStore = useQuestionsStore();
+    questionStore.saveQuestion(questions.value.questionList);
+    questionStore.setAnswer(answerStore.answers.questions);
     //@ts-ignore
-    console.log(qustionStore.questions);
-    // console.log(JSON.stringify([answerStore.answers]));
     router.push({name:'answer'});
 }
 </script>

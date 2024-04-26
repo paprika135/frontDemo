@@ -1,6 +1,6 @@
 import {type App} from 'vue';
 const questions:Record<string,any> = import.meta.glob('../../components/*.vue',{eager:true});
-const InlineBlank:Record<string,any> = import.meta.glob('../../components/*.ts',{eager:true});
+const InlineBlank:Record<string,any> = import.meta.glob('../../components/*.tsx',{eager:true});
 
 
 export default function setupPlugin(app:App){
