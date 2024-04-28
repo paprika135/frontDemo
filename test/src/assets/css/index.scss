@@ -18,8 +18,11 @@
     .questionTitle{
         @apply text-lg text-gray-700 align-middle;
         span{
-            @apply text-red-500 align-middle -ml-[10px];
+            @apply text-red-500 align-middle -ml-[7px];
         }
+    }
+    .errorQuestion{
+        @apply border-2 border-dashed border-rose-400;
     }
 }
 

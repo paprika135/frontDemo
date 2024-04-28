@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div :id="String(props.question?.questionId)">
         <fieldset :disabled="props.isDisable">
-            <legend class="questionTitle">{{ props.question.questionStem }}</legend>
-            <div :class="{isGray:props.isDisable}" class="questionBody">
+            <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question.questionStem }}</legend>
+            <div :class="{ isGray: props.isDisable }" class="questionBody">
                 <input-component :selectedAnswer="props.question.selectedAnswer" @blur="changeEvent"></input-component>
             </div>
         </fieldset>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { type PropType } from 'vue';
+import { computed, type PropType } from 'vue';
 import InputComponent from './Blank/InputComponent.vue';
 import useAnswersStore from '@/plugins/pinia/answers';
 const answerStore = useAnswersStore();
@@ -19,11 +19,11 @@ const props = defineProps({
         type: Object as PropType<QuestionType>,
         required: true
     },
-    questionSort:{
-        type:Number
+    questionSort: {
+        type: Number
     },
-    isDisable:{
-        type:Boolean
+    isDisable: {
+        type: Boolean
     }
 })
 
@@ -36,17 +36,24 @@ const anser = {
     selectedAnswer: ''
 }
 
-function changeEvent(event:FocusEvent){
-    anser.selectedAnswer = event.target?.value
+function changeEvent(event: FocusEvent) {
+    //空字符串无需再替换
+
+    anser.selectedAnswer = event.target?.value;
     answerStore.setAnswer(anser);
     answerStore.addAnswer();
+
     // console.log(answerStore.answers.questions);
 }
+
+const isNecessay = computed(() => {
+    return props.question?.isNecessary == 1 ? true : false;
+})
 
 </script>
 
 <style scoped lang="scss">
-div.isGray{
+div.isGray {
     @apply text-gray-500;
 }
 </style>

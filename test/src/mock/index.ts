@@ -150,7 +150,7 @@ const data:TestData = {
             "picture": "",
             "questionNumber": 6,
             "questionScore": 4,
-            "isNecessary": 1,
+            "isNecessary": 0,
             "questionOptions": [],
             "optionRandom": 0
         },
@@ -161,7 +161,7 @@ const data:TestData = {
             "picture": "",
             "questionNumber": 7,
             "questionScore": 5,
-            "isNecessary": 1,
+            "isNecessary": 0,
             "questionOptions": [],
             "optionRandom": 0
         }

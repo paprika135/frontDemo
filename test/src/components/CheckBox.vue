@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :id="String(props.question?.questionId)">
         <fieldset :disabled="props.isDisable" @change="clickevent">
             <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question.questionStem
                 }}</legend>
