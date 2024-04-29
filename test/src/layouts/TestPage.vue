@@ -17,7 +17,6 @@ import { provide, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import useQuestionsStore from '@/plugins/pinia/question';
 import useAnswersStore from '@/plugins/pinia/answers';
-import UncheckedIndex from '@/service/canSubmit';
 const router = useRouter();
 //试卷信息
 const questions = ref<TestData>(testData);
@@ -30,29 +29,9 @@ const skipTo = ()=>{
     //保存题目数据
     const questionStore = useQuestionsStore();
     questionStore.saveQuestion(questions.value.questionList);
-    questionStore.interAnswer(answerStore.answers.questions);
-    
-    // console.log(questionStore.questionsStore);
-    
-    //收集用户未答的必答题
-    const unCheckList = UncheckedIndex(questionStore.questionsStore,questionStore.necessaryQuestions);
-    if(unCheckList.length == 0){
-        router.push({name:'answer'});
-    }else{
-        questionStore.questionsStore.forEach(item=>{
-            const target = document.getElementById(String(item.questionId));
-            target?.classList.remove("errorQuestion")
-        })
-        unCheckList.forEach(item=>{
-            const target = document.getElementById(item?.questionId);
-            target?.classList.toggle('errorQuestion',true);
-        })
-    }
-
-    const firstUncheckedQuestion = document.getElementById(unCheckList[0]?.questionId)
-    firstUncheckedQuestion?.scrollIntoView({ behavior: "smooth"})
-
+    questionStore.setAnswer(answerStore.answers.questions);
     //@ts-ignore
+    router.push({name:'answer'});
 }
 </script>
 

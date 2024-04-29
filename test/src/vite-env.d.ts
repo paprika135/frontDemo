@@ -5,6 +5,13 @@ interface EventTarget {
     value: any
 }
 
+interface infoType {
+    "questionCommitResult": string,
+    "questionResult": number,
+    "curQuestionScore": number,
+    "answer": string
+}
+
 interface TestData {
     "testPaperId": number
     "testPaperNumber": string
@@ -19,11 +26,11 @@ interface TestData {
 }
 
 interface ResInfo {
-    "questionId":number,
-    "questionCommitResult":string,
-    "questionResult"?: number,
-    "answer":string,
+    "questionId": number
+    "questionResult"?: number
     "answerAnalysis"?: string
+    "questionType"?: string
+    "info"?: infoType[]
 }
 
 
@@ -32,7 +39,7 @@ interface ResData {
     "totalQuestion": number,
     "score": number,
     "rightQuestion": number,
-    "examResultInfo":ResInfo[]
+    "examResultInfo": ResInfo[]
 }
 
 
@@ -61,11 +68,11 @@ interface QuestionType {
     "questionOptions": QuestionOptions[]
     "optionRandom"?: number
     "componentName"?: string
-    "answer"?:any
-    "answerAnalysis"?:string
-    "isNecessary"?:number
-    "picture"?:any,
-    "selectedAnswer"?:any
-    "questionResult"?:number
+    "answer"?: any
+    "answerAnalysis"?: string
+    "isNecessary"?: number
+    "picture"?: any,
+    "selectedAnswer"?: any
+    "questionResult"?: number
 }
 

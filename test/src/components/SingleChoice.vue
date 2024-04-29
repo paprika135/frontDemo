@@ -1,5 +1,5 @@
 <template>
-    <div :id="String(props.question?.questionId)">
+    <div>
         <fieldset :disabled="props.isDisable" @click="clickevent" :name="String(singalchoiceComponentId)">
             <legend class="questionTitle"><span v-if="isNecessay">*</span>{{ props.question?.questionStem }}</legend>
             <div class="questionBody">
@@ -37,6 +37,10 @@ const isOptionChecked = (id:number)=>{
 }
 
 
+
+
+
+
 const isNecessay = computed(() => {
     return props.question?.isNecessary == 1 ? true : false;
 })
@@ -46,12 +50,12 @@ const anser = {
     //@ts-ignore
     questionType: props.question?.questionType,
     questionScore: props.question?.questionScore as number,
-    selectedAnswer: [] as string[]
+    selectedAnswer: ''
 }
 
 const clickevent = (event: MouseEvent | any) => {
     if (event.target.checked == true) {
-        anser.selectedAnswer = [event.target.value];
+        anser.selectedAnswer = event.target.value;
         answerStore.setAnswer(anser);
         answerStore.addAnswer();
         // console.log(answerStore.answers.questions);

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component  class="mb-5" v-for="(qeustion,index) of props.questionList" :questionSort="index" :question="qeustion" :is="QuestionTypeConfirm(qeustion.questionType)"></component>
+        <component class="mb-5" v-for="(qeustion,index) of props.questionList" :questionSort="index" :question="qeustion" :is="QuestionTypeConfirm(qeustion.questionType)"></component>
     </div>
 </template>
 
