@@ -23,11 +23,10 @@ const CreateVnode = (props:any,store:any,questionStem:string[])=>{
     for(let i = 0;i < questionStem.length - 1;i++){
         children.push(questionStem[i]);
         if(props.isDisable){
-            children.push(h(<span style="color:gray;">{props.question.selectedAnswer[i]}</span>))
-            // children.push(h(<input disabled class="border-2 w-10 focus:outline-none ml-1 rounded-md text-gray-400" type="text" value={props.question.selectedAnswer[i]}  />))
+            children.push(h(<input disabled class="border-2 w-10 focus:outline-none ml-1 rounded-md text-gray-400" type="text" value={props.question.selectedAnswer[i]}  />))
             continue;
         }
-        children.push(h('input',{"id":i,'class':'border-2 w-10 focus:outline-none ml-1 rounded-md',onBlur:(event:FocusEvent | any)=>{
+        children.push(h('input',{"id":i,'class':'border-2 focus:outline-none ml-1 w-10 rounded-md text-start',onBlur:(event:FocusEvent | any)=>{
             if(anser.selectedAnswer.length >= questionStem.length -1){
                 anser.selectedAnswer = templateAnswer(anser.selectedAnswer,questionStem.length -1);
                 anser.selectedAnswer[event.target.id] = event.target.value;
@@ -39,8 +38,8 @@ const CreateVnode = (props:any,store:any,questionStem:string[])=>{
         },onInput:(event:InputEvent | any)=>{
             // console.log(typeof window.getComputedStyle(event.target).getPropertyValue("width"));
             // console.log(window.getComputedStyle(event.target).getPropertyValue("width").split('p'));
-            if(Number(window.getComputedStyle(event.target).getPropertyValue("width").split('p')[0]) < 150){
-                event.target.style.width = (32 + (event.target.value.length + 1)*8) + 'px';
+            if(Number(window.getComputedStyle(event.target).getPropertyValue("width").split('p')[0]) < 500){
+                event.target.style.width = (32 + (event.target.value.length + 1)*16) + 'px';
             }
         }}))     
     }

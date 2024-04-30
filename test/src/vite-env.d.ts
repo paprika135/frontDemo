@@ -10,6 +10,7 @@ interface infoType {
     "questionResult": number,
     "curQuestionScore": number,
     "answer": string
+    "curQuestionScore"?:number
 }
 
 interface TestData {

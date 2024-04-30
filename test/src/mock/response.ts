@@ -39,7 +39,7 @@ const response:TestRes = {
                 "info": [
                     {
                         "questionCommitResult": "413",
-                        "questionResult": 1,
+                        "questionResult": 0,
                         "curQuestionScore": 5.0,
                         "answer": "413"
                     }
@@ -68,6 +68,12 @@ const response:TestRes = {
                         "questionResult": 0,
                         "curQuestionScore": 2.0,
                         "answer": "床前明月光"
+                    },
+                    {
+                        "questionCommitResult": "抬头望明月",
+                        "questionResult": 0 ,
+                        "curQuestionScore": 2.0,
+                        "answer": "抬头望明月"
                     },
                     {
                         "questionCommitResult": "抬头望明月",

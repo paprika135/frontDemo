@@ -10,21 +10,22 @@
 
 @layer base {
     html {
-      @apply font-body;
+        @apply font-body;
     }
-  }
+}
 
-@layer components{
-    .questionTitle{
+@layer components {
+    .questionTitle {
         @apply text-lg text-gray-700 align-middle;
-        span{
+
+        span {
             @apply text-red-500 align-middle -ml-[10px];
         }
     }
 }
 
-@layer components{
-    .questionBody{
+@layer components {
+    .questionBody {
         @apply ml-5 mt-2;
     }
 }
